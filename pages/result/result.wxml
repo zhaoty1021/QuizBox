@@ -1,0 +1,150 @@
+<view class="page" wx:if="{{result}}">
+
+  <!-- 解锁前：半遮半露状态 -->
+  <block wx:if="{{!unlocked}}">
+    <view class="lock-screen">
+      <view class="lock-glow"></view>
+
+      <text class="lock-sparkle">✨</text>
+      <text class="lock-headline">你的专属结果已生成</text>
+      <text class="lock-test-name">— {{test.title}} —</text>
+
+      <view class="preview-card">
+        <text class="preview-title">{{result.title}}</text>
+        <text class="preview-tagline" wx:if="{{result.tagline}}">{{result.tagline}}</text>
+        <view class="blur-area">
+          <text class="blur-text">{{result.desc}}</text>
+          <view class="blur-mask"></view>
+        </view>
+      </view>
+
+      <button class="btn-unlock" bindtap="onUnlockTap">
+        🎁 观看视频 · 免费解锁
+      </button>
+      <text class="lock-tip">观看短视频即可查看完整解读</text>
+    </view>
+  </block>
+
+  <!-- 解锁后：完整结果展示 -->
+  <block wx:else>
+    <view class="result-screen">
+      <!-- 结果头部氛围 -->
+      <view class="result-hero">
+        <view class="result-glow"></view>
+        <text class="result-test-name">{{test.title}}</text>
+        <text class="result-title">{{result.title}}</text>
+        <text class="result-tagline" wx:if="{{result.tagline}}">{{result.tagline}}</text>
+        <view class="result-divider"></view>
+      </view>
+
+      <!-- 性格标签 -->
+      <view class="traits-wrap" wx:if="{{result.traits.length > 0}}">
+        <view class="trait-tag" wx:for="{{result.traits}}" wx:key="index">{{item}}</view>
+      </view>
+
+      <!-- 描述正文 -->
+      <view class="result-body">
+        <text class="result-desc">{{result.desc}}</text>
+      </view>
+
+      <!-- 维度分数条（权重型测试） -->
+      <view class="dimension-section" wx:if="{{dimensionBars.length > 0}}">
+        <view class="dimension-header">
+          <text class="dimension-icon">📊</text>
+          <text class="dimension-label">你的维度分析</text>
+        </view>
+        <view class="dimension-list">
+          <view class="dimension-item" wx:for="{{dimensionBars}}" wx:key="key">
+            <view class="dimension-name-row">
+              <text class="dimension-name">{{item.label}}</text>
+              <text class="dimension-value">{{item.percent}}%</text>
+            </view>
+            <view class="dimension-bar-bg">
+              <view class="dimension-bar-fill" style="width: {{item.percent}}%"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 稀有度 -->
+      <view class="rarity-section" wx:if="{{rarityText}}">
+        <text class="rarity-text">{{rarityText}}</text>
+      </view>
+
+      <!-- 趣味建议 -->
+      <view class="advice-section" wx:if="{{result.advice}}">
+        <view class="advice-header">
+          <text class="advice-icon">💡</text>
+          <text class="advice-label">小测盒温馨提示</text>
+        </view>
+        <text class="advice-text">{{result.advice}}</text>
+      </view>
+
+      <!-- 隐藏内容区 -->
+      <view class="hidden-section">
+        <block wx:if="{{!hiddenUnlocked}}">
+          <view class="hidden-header">
+            <text class="hidden-icon">🔮</text>
+            <text class="hidden-label">隐藏揭秘</text>
+          </view>
+          <text class="hidden-hint">更深层的你，等待被发现...</text>
+          <button class="btn-unlock-hidden" bindtap="onUnlockHiddenTap">
+            解锁隐藏揭秘
+          </button>
+        </block>
+        <block wx:else>
+          <view class="hidden-header">
+            <text class="hidden-icon">🔮</text>
+            <text class="hidden-label">隐藏揭秘</text>
+          </view>
+          <text class="hidden-text">{{result.hidden}}</text>
+        </block>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-btns">
+        <button class="btn-primary" bindtap="onGeneratePoster" loading="{{generating}}">
+          🖼️ 生成专属卡片
+        </button>
+        <view class="btn-row">
+          <button class="btn-outline" open-type="share">
+            📤 分享
+          </button>
+          <button class="btn-outline" bindtap="onBackToIndex">
+            🔄 再测一套
+          </button>
+        </view>
+      </view>
+
+      <!-- 海报预览 -->
+      <view wx:if="{{posterPath}}" class="poster-section">
+        <image src="{{posterPath}}" mode="widthFix" class="poster-img" />
+        <button class="btn-save" bindtap="onSavePoster">💾 保存到相册</button>
+      </view>
+
+      <!-- 推荐其他测试 -->
+      <view class="recommend-section" wx:if="{{recommendTests.length > 0}}">
+        <text class="section-title">猜你也想测</text>
+        <scroll-view class="recommend-list" scroll-x enable-flex>
+          <view
+            wx:for="{{recommendTests}}" wx:key="id"
+            class="recommend-card"
+            bindtap="onRecommendTap" data-id="{{item.id}}"
+          >
+            <image class="recommend-cover" src="{{item.cover}}" mode="aspectFill" />
+            <text class="recommend-name">{{item.title}}</text>
+          </view>
+        </scroll-view>
+      </view>
+
+      <!-- Banner 广告 -->
+      <view class="banner-wrap" wx:if="{{bannerAdId}}">
+        <ad unit-id="{{bannerAdId}}" ad-type="banner" binderror="onAdError"></ad>
+      </view>
+    </view>
+  </block>
+
+  <!-- 隐藏 Canvas -->
+  <canvas type="2d" id="poster-canvas" style="width:375px;height:667px;position:fixed;left:-9999px;top:0;"></canvas>
+
+</view>

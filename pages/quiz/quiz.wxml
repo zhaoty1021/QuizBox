@@ -1,0 +1,44 @@
+<view class="page" wx:if="{{test}}">
+  <!-- 顶部进度区 -->
+  <view class="progress-section">
+    <!-- 计分/权重：进度条 -->
+    <block wx:if="{{algorithm !== 'branch'}}">
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progress}}%"></view>
+      </view>
+      <view class="progress-info">
+        <text class="progress-label">{{test.title}}</text>
+        <text class="progress-num">{{currentIndex + 1}}/{{selectedQuestions.length}}</text>
+      </view>
+    </block>
+    <!-- 分支型：步数 -->
+    <block wx:else>
+      <view class="progress-info">
+        <text class="progress-label">{{test.title}}</text>
+        <text class="progress-num">第 {{stepCount + 1}} 步</text>
+      </view>
+    </block>
+  </view>
+
+  <!-- 题目区 -->
+  <view class="question-section">
+    <view class="question-number" wx:if="{{algorithm !== 'branch'}}">Q{{currentIndex + 1}}</view>
+    <text class="question-text">{{currentQuestion.text}}</text>
+  </view>
+
+  <!-- 选项列表 -->
+  <view class="options-wrap">
+    <view
+      wx:for="{{currentQuestion.options}}"
+      wx:key="index"
+      class="option-item {{selectedOption === index ? 'selected' : ''}}"
+      bindtap="onOptionTap"
+      data-index="{{index}}"
+    >
+      <view class="option-indicator">
+        <text class="option-label">{{optionLabels[index]}}</text>
+      </view>
+      <text class="option-text">{{item.text}}</text>
+    </view>
+  </view>
+</view>

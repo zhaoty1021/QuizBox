@@ -1,0 +1,50 @@
+<view class="page">
+  <!-- 氛围顶部 -->
+  <view class="hero">
+    <view class="hero-glow"></view>
+    <text class="hero-title">小测盒</text>
+    <text class="hero-sub">每个测试都是一次灵魂对话</text>
+  </view>
+
+  <!-- 分类 Tab -->
+  <scroll-view class="tab-bar" scroll-x enable-flex>
+    <view
+      wx:for="{{categories}}" wx:key="key"
+      class="tab-item {{activeCategory === item.key ? 'active' : ''}}"
+      bindtap="onCategoryTap" data-key="{{item.key}}"
+    >{{item.label}}</view>
+  </scroll-view>
+
+  <!-- 测试卡片列表 -->
+  <view class="test-list">
+    <block wx:if="{{tests.length > 0}}">
+      <view
+        wx:for="{{tests}}" wx:key="id"
+        class="test-card"
+        hover-class="test-card-hover"
+        bindtap="onTestTap" data-id="{{item.id}}"
+      >
+        <!-- 卡片顶部封面区 -->
+        <view class="card-cover-wrap">
+          <image class="test-cover" src="{{item.cover}}" mode="aspectFill" />
+          <view class="card-cover-overlay"></view>
+          <view class="test-tag tag-{{item.category}}">{{item.categoryLabel}}</view>
+        </view>
+        <!-- 卡片底部信息区 -->
+        <view class="card-body">
+          <text class="test-title">{{item.title}}</text>
+          <view class="card-footer">
+            <text class="test-count">{{item.count}} 人已测</text>
+            <text class="card-arrow">开始 ›</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="empty-state">
+        <text class="empty-icon">🔍</text>
+        <text class="empty-text">该分类暂无测试</text>
+      </view>
+    </block>
+  </view>
+</view>

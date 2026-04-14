@@ -1,0 +1,131 @@
+.page {
+  min-height: 100vh;
+  background-color: #0d0d1a;
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ========== 顶部进度区 ========== */
+.progress-section {
+  margin-top: 10rpx;
+  margin-bottom: 48rpx;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8rpx;
+  background-color: rgba(255,255,255,0.08);
+  border-radius: 4rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, #e94560, #533483);
+  border-radius: 4rpx;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16rpx;
+}
+
+.progress-label {
+  font-size: 22rpx;
+  color: #666666;
+  max-width: 70%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.progress-num {
+  font-size: 22rpx;
+  color: #888888;
+  font-weight: bold;
+}
+
+/* ========== 题目区 ========== */
+.question-section {
+  padding: 20rpx 0 60rpx;
+}
+
+.question-number {
+  font-size: 56rpx;
+  font-weight: bold;
+  color: rgba(233,69,96,0.2);
+  margin-bottom: 16rpx;
+}
+
+.question-text {
+  display: block;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+/* ========== 选项列表 ========== */
+.options-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 20rpx;
+  padding: 32rpx 28rpx;
+  margin-bottom: 20rpx;
+  border: 2rpx solid rgba(255,255,255,0.06);
+}
+
+.option-item:active {
+  background-color: rgba(255,255,255,0.1);
+}
+
+.option-item.selected {
+  border-color: #e94560;
+  background-color: rgba(233,69,96,0.12);
+}
+
+.option-indicator {
+  width: 56rpx;
+  height: 56rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.06);
+  margin-right: 24rpx;
+  flex-shrink: 0;
+}
+
+.option-label {
+  font-size: 24rpx;
+  font-weight: bold;
+  color: #888888;
+}
+
+.option-item.selected .option-indicator {
+  background-color: #e94560;
+}
+
+.option-item.selected .option-label {
+  color: #ffffff;
+}
+
+.option-text {
+  font-size: 28rpx;
+  color: #dddddd;
+  line-height: 1.5;
+}
+
+.option-item.selected .option-text {
+  color: #ffffff;
+}

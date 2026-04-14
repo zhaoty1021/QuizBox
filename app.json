@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/quiz/quiz",
+    "pages/result/result"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#0d0d1a",
+    "navigationBarTitleText": "趣味测试",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0d0d1a"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

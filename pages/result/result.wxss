@@ -1,0 +1,517 @@
+.page {
+  min-height: 100vh;
+  background-color: #0d0d1a;
+}
+
+/* ========== 解锁前：半遮半露 ========== */
+.lock-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 30rpx 60rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.lock-glow {
+  position: absolute;
+  top: -60rpx;
+  left: 50%;
+  margin-left: -250rpx;
+  width: 500rpx;
+  height: 500rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(233,69,96,0.2) 0%, rgba(83,52,131,0.1) 40%, transparent 70%);
+}
+
+.lock-sparkle {
+  font-size: 72rpx;
+  margin-bottom: 24rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.lock-headline {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 12rpx;
+}
+
+.lock-test-name {
+  font-size: 22rpx;
+  color: #666666;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 48rpx;
+}
+
+.preview-card {
+  width: 100%;
+  background-color: rgba(255,255,255,0.05);
+  border-radius: 20rpx;
+  padding: 36rpx 32rpx;
+  margin-bottom: 48rpx;
+  border: 2rpx solid rgba(255,255,255,0.06);
+  position: relative;
+  z-index: 1;
+}
+
+.preview-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+.blur-area {
+  position: relative;
+  width: 100%;
+  max-height: 160rpx;
+  overflow: hidden;
+}
+
+.blur-text {
+  font-size: 26rpx;
+  color: #ffffff;
+  line-height: 1.8;
+  filter: blur(6px);
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.blur-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(13,13,26,0.95) 100%
+  );
+  z-index: 1;
+}
+
+.btn-unlock {
+  width: 80% !important;
+  padding: 28rpx 0;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #e94560, #533483);
+  border-radius: 50rpx;
+  border: none;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-unlock::after {
+  border: none;
+}
+
+.lock-tip {
+  font-size: 20rpx;
+  color: #555555;
+  margin-top: 16rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/* ========== 解锁后：完整结果 ========== */
+.result-screen {
+  padding: 0 30rpx;
+}
+
+/* 结果头部氛围 */
+.result-hero {
+  position: relative;
+  text-align: center;
+  padding: 60rpx 0 40rpx;
+  overflow: hidden;
+}
+
+.result-glow {
+  position: absolute;
+  top: -80rpx;
+  left: 50%;
+  margin-left: -200rpx;
+  width: 400rpx;
+  height: 400rpx;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(233,69,96,0.2) 0%, rgba(83,52,131,0.08) 50%, transparent 70%);
+}
+
+.result-test-name {
+  display: block;
+  font-size: 22rpx;
+  color: #666666;
+  margin-bottom: 20rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.result-title {
+  display: block;
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.result-divider {
+  width: 80rpx;
+  height: 4rpx;
+  background: linear-gradient(to right, #e94560, #533483);
+  margin: 32rpx auto 0;
+  border-radius: 2rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/* 结果 tagline */
+.result-tagline {
+  display: block;
+  font-size: 26rpx;
+  color: #aaaaaa;
+  text-align: center;
+  margin-top: 16rpx;
+  position: relative;
+  z-index: 1;
+}
+
+.preview-tagline {
+  display: block;
+  font-size: 24rpx;
+  color: #888888;
+  text-align: center;
+  margin-bottom: 24rpx;
+}
+
+/* 性格标签 */
+.traits-wrap {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16rpx;
+  padding: 24rpx 0 16rpx;
+}
+
+.trait-tag {
+  font-size: 22rpx;
+  color: #e94560;
+  padding: 8rpx 24rpx;
+  border-radius: 50rpx;
+  background-color: rgba(233,69,96,0.1);
+  border: 1rpx solid rgba(233,69,96,0.2);
+}
+
+/* 描述正文 */
+.result-body {
+  padding: 24rpx 0 40rpx;
+}
+
+.result-desc {
+  display: block;
+  font-size: 28rpx;
+  color: #bbbbbb;
+  line-height: 2;
+}
+
+/* ========== 维度分数条 ========== */
+.dimension-section {
+  background-color: rgba(233,69,96,0.06);
+  border-radius: 20rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: 32rpx;
+  border: 2rpx solid rgba(233,69,96,0.1);
+}
+
+.dimension-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24rpx;
+}
+
+.dimension-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.dimension-label {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #e94560;
+}
+
+.dimension-list {
+  width: 100%;
+}
+
+.dimension-item {
+  margin-bottom: 20rpx;
+}
+
+.dimension-item:last-child {
+  margin-bottom: 0;
+}
+
+.dimension-name-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8rpx;
+}
+
+.dimension-name {
+  font-size: 24rpx;
+  color: #aaaaaa;
+}
+
+.dimension-value {
+  font-size: 22rpx;
+  color: #e94560;
+  font-weight: bold;
+}
+
+.dimension-bar-bg {
+  width: 100%;
+  height: 12rpx;
+  background-color: rgba(255,255,255,0.06);
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.dimension-bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, #e94560, #533483);
+  border-radius: 6rpx;
+  transition: width 0.6s ease;
+}
+
+/* ========== 稀有度 ========== */
+.rarity-section {
+  text-align: center;
+  margin-bottom: 32rpx;
+  padding: 16rpx 0;
+}
+
+.rarity-text {
+  font-size: 22rpx;
+  color: #888888;
+  letter-spacing: 2rpx;
+}
+
+/* ========== 趣味建议 ========== */
+.advice-section {
+  background-color: rgba(74,158,255,0.06);
+  border-radius: 20rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: 32rpx;
+  border: 2rpx solid rgba(74,158,255,0.1);
+}
+
+.advice-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.advice-icon {
+  font-size: 32rpx;
+  margin-right: 10rpx;
+}
+
+.advice-label {
+  font-size: 26rpx;
+  font-weight: bold;
+  color: #4a9eff;
+}
+
+.advice-text {
+  display: block;
+  font-size: 26rpx;
+  color: #bbbbbb;
+  line-height: 1.8;
+}
+
+/* ========== 隐藏内容区 ========== */
+.hidden-section {
+  background-color: rgba(255,255,255,0.04);
+  border-radius: 20rpx;
+  padding: 32rpx;
+  margin-bottom: 48rpx;
+  border: 2rpx solid rgba(255,255,255,0.06);
+}
+
+.hidden-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.hidden-icon {
+  font-size: 36rpx;
+  margin-right: 12rpx;
+}
+
+.hidden-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #4a9eff;
+}
+
+.hidden-hint {
+  display: block;
+  font-size: 24rpx;
+  color: #666666;
+  margin-bottom: 24rpx;
+}
+
+.btn-unlock-hidden {
+  width: 100% !important;
+  padding: 22rpx 0;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #4a9eff;
+  background-color: rgba(74,158,255,0.1);
+  border-radius: 50rpx;
+  border: 2rpx solid rgba(74,158,255,0.2);
+  text-align: center;
+}
+
+.btn-unlock-hidden::after {
+  border: none;
+}
+
+.hidden-text {
+  display: block;
+  font-size: 26rpx;
+  color: #bbbbbb;
+  line-height: 1.9;
+}
+
+/* ========== 操作按钮 ========== */
+.action-btns {
+  margin-bottom: 48rpx;
+}
+
+.btn-primary {
+  width: 100% !important;
+  padding: 28rpx 0;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ffffff;
+  background: linear-gradient(135deg, #e94560, #533483);
+  border-radius: 50rpx;
+  border: none;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-row {
+  display: flex;
+  gap: 20rpx;
+}
+
+.btn-outline {
+  flex: 1;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  color: #aaaaaa;
+  background-color: transparent;
+  border-radius: 50rpx;
+  border: 2rpx solid rgba(255,255,255,0.12);
+  text-align: center;
+}
+
+.btn-outline::after {
+  border: none;
+}
+
+/* ========== 海报预览 ========== */
+.poster-section {
+  margin-bottom: 48rpx;
+}
+
+.poster-img {
+  width: 100%;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.btn-save {
+  width: 100% !important;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50rpx;
+  border: none;
+  text-align: center;
+}
+
+.btn-save::after {
+  border: none;
+}
+
+/* ========== 推荐其他测试 ========== */
+.recommend-section {
+  margin-bottom: 48rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 24rpx;
+}
+
+.recommend-list {
+  white-space: nowrap;
+}
+
+.recommend-card {
+  display: inline-block;
+  width: 260rpx;
+  margin-right: 20rpx;
+  vertical-align: top;
+}
+
+.recommend-cover {
+  width: 260rpx;
+  height: 180rpx;
+  border-radius: 16rpx;
+  background-color: #16213e;
+}
+
+.recommend-name {
+  display: block;
+  font-size: 24rpx;
+  color: #aaaaaa;
+  margin-top: 12rpx;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* ========== Banner 广告 ========== */
+.banner-wrap {
+  margin-bottom: 40rpx;
+}
